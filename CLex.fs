@@ -405,27 +405,27 @@ and Comment  lexbuf =
 and SedComment  lexbuf =
   match _fslex_tables.Interpret(16,lexbuf) with
   | 0 -> ( 
-# 107 "CLex.fsl"
+# 108 "CLex.fsl"
                                      SedComment lexbuf; SedComment lexbuf 
 # 410 "CLex.fs"
           )
   | 1 -> ( 
-# 108 "CLex.fsl"
+# 109 "CLex.fsl"
                                      () 
 # 415 "CLex.fs"
           )
   | 2 -> ( 
-# 109 "CLex.fsl"
+# 110 "CLex.fsl"
                                      lexbuf.EndPos <- lexbuf.EndPos.NextLine; SedComment lexbuf 
 # 420 "CLex.fs"
           )
   | 3 -> ( 
-# 110 "CLex.fsl"
+# 111 "CLex.fsl"
                                      failwith "Lexer error: unterminated comment" 
 # 425 "CLex.fs"
           )
   | 4 -> ( 
-# 111 "CLex.fsl"
+# 112 "CLex.fsl"
                                      SedComment lexbuf 
 # 430 "CLex.fs"
           )
@@ -434,17 +434,17 @@ and SedComment  lexbuf =
 and EndLineComment  lexbuf =
   match _fslex_tables.Interpret(11,lexbuf) with
   | 0 -> ( 
-# 114 "CLex.fsl"
+# 115 "CLex.fsl"
                                      lexbuf.EndPos <- lexbuf.EndPos.NextLine 
 # 439 "CLex.fs"
           )
   | 1 -> ( 
-# 115 "CLex.fsl"
+# 116 "CLex.fsl"
                                      () 
 # 444 "CLex.fs"
           )
   | 2 -> ( 
-# 116 "CLex.fsl"
+# 117 "CLex.fsl"
                                      EndLineComment lexbuf 
 # 449 "CLex.fs"
           )
@@ -453,42 +453,42 @@ and EndLineComment  lexbuf =
 and String chars lexbuf =
   match _fslex_tables.Interpret(0,lexbuf) with
   | 0 -> ( 
-# 120 "CLex.fsl"
+# 121 "CLex.fsl"
                        Microsoft.FSharp.Core.String.concat "" (List.map string (List.rev chars)) 
 # 458 "CLex.fs"
           )
   | 1 -> ( 
-# 125 "CLex.fsl"
+# 126 "CLex.fsl"
                        String (cEscape (lexemeAsString lexbuf) :: chars) lexbuf 
 # 463 "CLex.fs"
           )
   | 2 -> ( 
-# 127 "CLex.fsl"
+# 128 "CLex.fsl"
                        String ('\'' :: chars) lexbuf 
 # 468 "CLex.fs"
           )
   | 3 -> ( 
-# 129 "CLex.fsl"
+# 130 "CLex.fsl"
                        failwith "Lexer error: illegal escape sequence" 
 # 473 "CLex.fs"
           )
   | 4 -> ( 
-# 130 "CLex.fsl"
+# 131 "CLex.fsl"
                                           failwith "Lexer error: unterminated string" 
 # 478 "CLex.fs"
           )
   | 5 -> ( 
-# 133 "CLex.fsl"
+# 134 "CLex.fsl"
                                   failwith "Lexer error: newline in string" 
 # 483 "CLex.fs"
           )
   | 6 -> ( 
-# 136 "CLex.fsl"
+# 137 "CLex.fsl"
                        failwith "Lexer error: invalid character in string" 
 # 488 "CLex.fs"
           )
   | 7 -> ( 
-# 138 "CLex.fsl"
+# 139 "CLex.fsl"
                        String (char (lexbuf.LexemeChar 0) :: chars) lexbuf 
 # 493 "CLex.fs"
           )

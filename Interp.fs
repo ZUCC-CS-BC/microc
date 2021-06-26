@@ -291,7 +291,16 @@ and eval e locEnv gloEnv store : int * store =
         let (res, store2) = eval e locEnv gloEnv store1
         (res, setSto store2 loc res)
     | CstI i -> (i, store)
+    | FunChar c    -> ((int c), store)
     | Addr acc -> access acc locEnv gloEnv store
+    | Print (ot , e1) ->    let (i1,store1) = 
+                                eval e1 locEnv gloEnv store
+                            let res = 
+                                match ot with
+                                | "%c"   -> (printf "%c " (char i1); i1)
+                                | "%d"   -> (printf "%d " i1; i1)  
+                                | _ -> failwith ("unknown primitive " + ot)
+                            (res, store1)
     | Prim1 (ope, e1) ->
         let (i1, store1) = eval e1 locEnv gloEnv store
 
