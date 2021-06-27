@@ -1,12 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "u6tOADZ5p7eDbkshA86SL8ner7ipnbbYozS/BpSBAfR22rnQc7AIrVYArlRUmTB1igll4wYgcwszuaRfHJXaxQ==",
+  "dgSpecHash": "sIqavagq22+LmAGIF29yaBeTcHGNDZf0wL9OBeQwpX+Jp3plOGaBlgLkeTDD4nddfRqnGvJV0rpO1KCaMS5Ymw==",
   "success": true,
-  "projectFilePath": "G:\\bochen\\BYYL\\big\\plzoofs\\microc\\microcc.fsproj",
-  "expectedPackageFiles": [
-    "C:\\Users\\86139\\.nuget\\packages\\fsharp.core\\5.0.0\\fsharp.core.5.0.0.nupkg.sha512",
-    "C:\\Users\\86139\\.nuget\\packages\\fslexyacc\\10.0.0\\fslexyacc.10.0.0.nupkg.sha512",
-    "C:\\Users\\86139\\.nuget\\packages\\fslexyacc.runtime\\10.0.0\\fslexyacc.runtime.10.0.0.nupkg.sha512"
-  ],
+  "projectFilePath": "G:\\bochen\\BYYL\\big\\plzoofs\\microc\\machine.csproj",
+  "expectedPackageFiles": [],
   "logs": []
 }

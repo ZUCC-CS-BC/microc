@@ -13,6 +13,8 @@ module Absyn
 type typ =
   | TypI                             (* Type int                    *)
   | TypC                             (* Type char                   *)
+  | TypeString    (**)
+  | TypeFloat     (**)  
   | TypA of typ * int option         (* Array type                  *)
   | TypP of typ                      (* Pointer type                *)
                                                                    
@@ -23,6 +25,7 @@ and expr =                           // 表达式，右值
   | CstI of int                      (* Constant                    *)
   | FunChar of char                  (* FunChar char               *)
   | ConstString of string            (*constant string*)
+  | ConstFloat of float32 (*constant float*)
   | Print of string * expr 
   | Prim1 of string * expr           (* Unary primitive operator    *)
   | Prim2 of string * expr * expr    (* Binary primitive operator   *)

@@ -1,3 +1,6 @@
+G:\bochen\BYYL\big\plzoofs\microc\obj\Debug\net5.0\microcc.fsproj.AssemblyReference.cache
+G:\bochen\BYYL\big\plzoofs\microc\obj\Debug\net5.0\microcc.AssemblyInfoInputs.cache
+G:\bochen\BYYL\big\plzoofs\microc\obj\Debug\net5.0\microcc.AssemblyInfo.fs
 G:\bochen\BYYL\big\plzoofs\microc\bin\Debug\net5.0\microcc.exe
 G:\bochen\BYYL\big\plzoofs\microc\bin\Debug\net5.0\microcc.deps.json
 G:\bochen\BYYL\big\plzoofs\microc\bin\Debug\net5.0\microcc.runtimeconfig.json
@@ -19,9 +22,6 @@ G:\bochen\BYYL\big\plzoofs\microc\bin\Debug\net5.0\ru\FSharp.Core.resources.dll
 G:\bochen\BYYL\big\plzoofs\microc\bin\Debug\net5.0\tr\FSharp.Core.resources.dll
 G:\bochen\BYYL\big\plzoofs\microc\bin\Debug\net5.0\zh-Hans\FSharp.Core.resources.dll
 G:\bochen\BYYL\big\plzoofs\microc\bin\Debug\net5.0\zh-Hant\FSharp.Core.resources.dll
-G:\bochen\BYYL\big\plzoofs\microc\obj\Debug\net5.0\microcc.fsproj.AssemblyReference.cache
-G:\bochen\BYYL\big\plzoofs\microc\obj\Debug\net5.0\microcc.AssemblyInfoInputs.cache
-G:\bochen\BYYL\big\plzoofs\microc\obj\Debug\net5.0\microcc.AssemblyInfo.fs
 G:\bochen\BYYL\big\plzoofs\microc\obj\Debug\net5.0\microcc.fsproj.CopyComplete
 G:\bochen\BYYL\big\plzoofs\microc\obj\Debug\net5.0\microcc.dll
 G:\bochen\BYYL\big\plzoofs\microc\obj\Debug\net5.0\microcc.pdb

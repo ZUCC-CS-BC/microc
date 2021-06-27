@@ -17,6 +17,9 @@ type instr =
   | Label of label                     (* symbolic label; pseudo-instruc. *)
   | FLabel of int * label                     (* symbolic label; pseudo-instruc. *)
   | CSTI of int                        (* constant                        *)
+  | CSTC of int32                        (* constant                        *)
+  | CSTF of int32
+//   | CSTS of  int list
   | OFFSET of int                        (* constant     偏移地址  x86     *) 
   | GVAR of int                        (* global var     全局变量  x86     *) 
   | ADD                                (* addition                        *)
@@ -80,7 +83,6 @@ let rec lookup env x =
 
 [<Literal>]
 let CODECSTI   = 0 
-
 
 [<Literal>]
 let CODEADD    = 1 
@@ -168,8 +170,16 @@ let CODEPRINTC = 23
 let CODELDARGS = 24
 
 [<Literal>]
-let CODESTOP   = 25;
+let CODESTOP   = 25
 
+[<Literal>]
+let CODECSTC   = 26;
+
+// [<Literal>]
+// let CODECSTS    = 27;
+
+[<Literal>]
+let CODECSTF    = 27;
 
 
 (* Bytecode emission, first pass: build environment that maps 
@@ -182,6 +192,9 @@ let makelabenv (addr, labenv) instr =
     | Label lab      -> (addr, (lab, addr) :: labenv)
     | FLabel (m,lab)      -> (addr, (lab, addr) :: labenv)
     | CSTI i         -> (addr+2, labenv)
+    | CSTC i         -> (addr+2, labenv)
+    | CSTF i            -> (addr+2, labenv)
+    // | CSTS i         -> (addr+2, labenv)
     | GVAR i         -> (addr+2, labenv)
     | OFFSET i       -> (addr+2, labenv)
     | ADD            -> (addr+1, labenv)
@@ -220,6 +233,9 @@ let rec emitints getlab instr ints =
     | Label lab      -> ints
     | FLabel (m,lab) -> ints
     | CSTI i         -> CODECSTI   :: i :: ints
+    | CSTC i         -> CODECSTC   :: i :: ints
+    | CSTF i            -> CODECSTF     :: i            :: ints
+    // | CSTS i         -> CODECSTS   :: i :: ints
     | GVAR i         -> CODECSTI   :: i :: ints
     | OFFSET i       -> CODECSTI   :: i :: ints
     | ADD            -> CODEADD    :: ints
@@ -247,7 +263,6 @@ let rec emitints getlab instr ints =
     | PRINTC         -> CODEPRINTC :: ints
     | LDARGS m        -> CODELDARGS :: ints
     | STOP           -> CODESTOP   :: ints
-
 
 (* Convert instruction list to int list in two passes:
    Pass 1: build label environment
@@ -305,5 +320,8 @@ let rec decomp ints : instr list =
     | CODELDARGS :: ints_rest                         ->   LDARGS 0       :: decomp ints_rest
     | CODESTOP   :: ints_rest                         ->   STOP             :: decomp ints_rest
     | CODECSTI   :: i :: ints_rest                    ->   CSTI i :: decomp ints_rest       
+    | CODECSTC   :: i :: ints_rest                    ->   CSTC i :: decomp ints_rest     
+    // | CODECSTS   :: i :: ints_rest                  ->   CSTS i         :: decomp ints_rest        
+    | CODECSTF   :: i :: ints_rest                  ->   CSTF i         :: decomp ints_rest        
     | _                                       ->    printf "%A" ints; failwith "unknow code"
 
