@@ -96,6 +96,15 @@ rule Token = parse          // 每个 规则rule 会生成为一个函数，函�
   | '"'             { CSTSTRING (String [] lexbuf) }   // 调用字符串处理规则
   | eof             { EOF }
   | _               { failwith "Lexer error: illegal symbol" }
+  | "++"            { PLUSPLUS }  //i++
+  | "--"            { MINUSMINUS }  //i--
+  | "+="            { PLUSASSIGN } //i+=n
+  | "-="            { MINUSASSIGN } //i-=n
+  | "*="            { TIMESASSIGN } //i*=n
+  | "/="            { DIVASSIGN } //i/=n
+  | "%="            { MODASSIGN } //i%=n
+  | "+++"           { PLUSPLUSPLUS }  //i+++
+  | "^="            { XOR }  //i^=n 异或
 
 and Comment = parse
    | "/*"           { Comment lexbuf; Comment lexbuf }  // 注释的嵌套处理

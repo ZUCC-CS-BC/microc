@@ -336,6 +336,25 @@ and eval e locEnv gloEnv store : int * store =
             | _ -> failwith ("unknown primitive " + ope)
 
         (res, store2)
+    | SimpleOpt (ope,acc,e) ->
+        let  (loc, store1) = access acc locEnv gloEnv store // 取acc地址
+        let  (i1)  = getSto store1 loc
+        let  (i2, store2) = eval e locEnv gloEnv store
+        let  res =
+            match ope with
+            | "Z++" -> i1 + i2
+            | "Z+++" -> i1 + i2
+            | "++Z" -> i1 + i2
+            | "Z--" -> i1 - i2
+            | "--Z" -> i1 - i2
+            | "+="  -> i1 + i2
+            | "-="  -> i1 - i2
+            | "*="  -> i1 * i2
+            | "/="  -> i1 / i2
+            | "%="  -> i1 % i2
+            // | "^="  -> i1 ^ i2
+            | _ -> failwith ("unknown primitive " + ope)
+        (res, setSto store2 loc res)
     | Andalso (e1, e2) ->
         let (i1, store1) as res = eval e1 locEnv gloEnv store
 
